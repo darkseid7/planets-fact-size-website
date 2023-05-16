@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import anime from "animejs/lib/anime.es.js";
 import {
   Description,
   ImgContainer,
@@ -8,6 +9,7 @@ import {
   Facts,
 } from "./PlanetDescriptionStyledComponent";
 import ResponsiveButtonInfo from "../ResponsiveButtonInfo/ResponsiveButtonInfo";
+import svgSourceIcon from "../../assets/icon-source.svg";
 const PlanetDescription = ({
   color,
   images,
@@ -21,11 +23,21 @@ const PlanetDescription = ({
   );
   const [selectedButton, setSelectedButton] = useState("overview");
   const [geologyImage, setGeologyImage] = useState(images.geology);
+  const [showGeologyImage, setShowGeologyImage] = useState("hidden");
+  const [sourceLink, setSourceLink] = useState(overview.source);
 
   useEffect(() => {
     setCurrentImage(images.planet);
     setSelectedButton("overview");
     setGeologyImage(images.geology);
+    setShowGeologyImage("hidden");
+
+    anime({
+      targets: [".planet-facts"],
+      opacity: [0, 1],
+      duration: 600,
+      easing: "easeInQuad",
+    });
   }, [images]);
 
   const handleClick = (name) => {
@@ -33,17 +45,44 @@ const PlanetDescription = ({
     switch (name) {
       case "overview":
         setCurrentImage(images?.planet);
+        setShowGeologyImage("hidden");
+        setSourceLink(overview.source);
         break;
       case "internal-structure":
         setCurrentImage(images?.internal);
+        setShowGeologyImage("hidden");
+        setSourceLink(structure.source);
         break;
       case "surface-geology":
-        setCurrentImage(images?.geology);
-        setGeologyImage(images?.planet);
+        setGeologyImage(images?.geology);
+        setCurrentImage(images?.planet);
+        setShowGeologyImage("visible");
+        setSourceLink(geology.source);
         break;
       default:
         setCurrentImage(images?.planet);
     }
+
+    anime({
+      targets: ".planet-image",
+      scale: [0.9, 1],
+      duration: 500,
+      easing: "easeOutExpo",
+    });
+
+    anime({
+      targets: ".information",
+      opacity: [0, 1],
+      duration: 600,
+      easing: "easeInQuad",
+    });
+
+    anime({
+      targets: ".surface-image",
+      opacity: [0, 1],
+      duration: 200,
+      easing: "easeInQuad",
+    });
   };
 
   let newPath = "";
@@ -66,19 +105,13 @@ const PlanetDescription = ({
         color={color}
       />
       <Description>
-        <ImgContainer size={images.responsive}>
-          {selectedButton === "surface-geology" ? (
-            <>
-              <img src={newPath2} alt="" />
-              <img className="surface-image" src={newPath} />
-            </>
-          ) : (
-            <img src={newPath} alt="" />
-          )}
+        <ImgContainer showSurface={showGeologyImage} size={images.responsive}>
+          <img className="planet-image" src={newPath} alt="" />
+          <img className="surface-image" src={newPath2} />
         </ImgContainer>
 
         <PlanetFacts>
-          <Facts>
+          <Facts className="planet-facts">
             <h1 className="name">{name}</h1>
             <p className="information">
               {selectedButton === "overview"
@@ -90,9 +123,10 @@ const PlanetDescription = ({
                 : ""}
             </p>
             <p className="source">
-              Source:
-              <a href="ass" target="_blank">
+              Source: &nbsp;
+              <a href={sourceLink} target="_blank" rel="noreferrer">
                 Wikipedia
+                <img src={svgSourceIcon} alt="" />
               </a>
             </p>
           </Facts>

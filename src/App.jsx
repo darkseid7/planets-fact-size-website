@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import Planet from "./components/Planet";
-import Header from "./components/Header/Header";
+import anime from "animejs/lib/anime.es.js";
 import styled from "styled-components";
 
+import Planet from "./components/Planet";
+import Header from "./components/Header/Header";
+import Sky from "./components/Sky";
 const MainApp = styled.div`
   max-width: 1440px;
   margin: 0 auto;
@@ -10,8 +12,9 @@ const MainApp = styled.div`
 
 function App() {
   const [planet, setPlanet] = useState([]);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   // const [newUrl, setNewUrl] = useState("http://localhost:3000/mercury");
-  const [newUrl, setNewUrl] = useState("http://192.168.1.4:3000/mercury");
+  const [newUrl, setNewUrl] = useState("http://192.168.1.4:3000/earth");
 
   const Planets = [
     { name: "mercury", color: "#419ebb" },
@@ -33,12 +36,28 @@ function App() {
     getData();
   }, [newUrl]);
 
+  //execute this effect when it's first time charging the page
+  useEffect(() => {
+    if (isFirstLoad) {
+      anime({
+        targets: "#root",
+        opacity: [0, 1],
+        duration: 1000,
+        easing: "easeInQuad",
+        complete: () => {
+          setIsFirstLoad(!isFirstLoad);
+        },
+      });
+    }
+  }, [isFirstLoad]);
+
   if (planet.length === 0) {
-    return <h1>Loading...</h1>;
+    return <h1>xd</h1>;
   }
 
   return (
     <>
+      <Sky />
       <MainApp>
         <Header planets={Planets} newUrl={newUrl} setNewUrl={setNewUrl} />
         <Planet planet={planet} />

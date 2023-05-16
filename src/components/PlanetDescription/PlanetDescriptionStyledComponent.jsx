@@ -30,7 +30,9 @@ export const ImgContainer = styled.div`
 
   img {
     position: absolute;
+
     &.surface-image {
+      visibility: ${({ showSurface }) => showSurface};
       width: 163px;
       height: 199px;
       z-index: 1;
@@ -63,6 +65,7 @@ export const ImgContainer = styled.div`
     height: 300px;
     img {
       width: ${({ size }) => size};
+
       &.surface-image {
         width: 80px;
         height: 96px;
@@ -113,6 +116,7 @@ export const Facts = styled.div`
     padding-top: 1rem;
     font-family: ${fontSpartan};
     text-align: start;
+    opacity: 0.5;
   }
 
   @media only screen and (max-width: 1060px) {
@@ -134,10 +138,12 @@ export const Facts = styled.div`
     .name {
       margin-bottom: 20px;
     }
+
     .information {
       line-height: 22px;
       height: 132px;
     }
+
     .source {
       padding-top: 1.5rem;
       font-size: 12px;
@@ -157,8 +163,9 @@ export const Facts = styled.div`
       text-align: center;
       font-weight: 400;
     }
+
     .source {
-      padding: 0;
+      padding: 2rem 0;
       text-align: center;
     }
   }

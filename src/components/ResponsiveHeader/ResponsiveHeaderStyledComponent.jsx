@@ -38,10 +38,10 @@ export const MenuResponsive = styled.div`
   height: 120vh;
   overflow-y: auto;
   z-index: 999;
-  display: none;
+  display: ${({ showMenu }) => showMenu};
 
   @media only screen and (max-width: 664px) {
-    display: block;
+    display: ${({ showMenu }) => showMenu};
   }
 `;
 

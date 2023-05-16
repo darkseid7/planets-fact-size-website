@@ -5,9 +5,9 @@
   font-family: Antonio,  system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-image: url("./assets/background-stars.svg");
+  /* background-image: url("./assets/background-stars.svg");
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
   background-color: #070724;
   color: #fff;
   font-synthesis: none;

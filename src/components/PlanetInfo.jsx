@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import anime from "animejs";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const fontSpartan = "Spartan";
@@ -76,9 +78,24 @@ const Info = styled.li`
 `;
 
 const PlanetInfo = ({ rotation, revolution, radius, temp }) => {
+  useEffect(() => {
+    // anime({
+    //   targets: ".textoo",
+    //   scale: [0, 1],
+    //   duration: 1000,
+    //   easing: "easeOutExpo",
+    // });
+    anime({
+      targets: [".planet-info"],
+      opacity: [0, 1],
+      duration: 600,
+      easing: "easeInQuad",
+    });
+  }, [rotation]);
+
   return (
     <>
-      <InfoWrapper>
+      <InfoWrapper className="planet-info">
         <Info>
           <span className="info-text">Rotation time</span>
           <span className="info-value">{rotation}</span>

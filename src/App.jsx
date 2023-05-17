@@ -14,7 +14,8 @@ function App() {
   const [planet, setPlanet] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   // const [newUrl, setNewUrl] = useState("http://localhost:3000/mercury");
-  const [newUrl, setNewUrl] = useState("http://192.168.1.4:3000/earth");
+  // const [newUrl, setNewUrl] = useState("http://192.168.1.4:3000/earth");
+  const [newUrl, setNewUrl] = useState("/earth");
 
   const Planets = [
     { name: "mercury", color: "#419ebb" },
@@ -29,9 +30,10 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch(newUrl);
+      const response = await fetch("/data.json");
+      const splitNewUrl = newUrl.split("/");
       const data = await response.json();
-      setPlanet(data);
+      setPlanet(data[`${splitNewUrl[1]}`]);
     }
     getData();
   }, [newUrl]);

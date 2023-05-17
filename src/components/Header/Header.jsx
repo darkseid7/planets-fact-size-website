@@ -12,7 +12,8 @@ const Header = ({ planets, setNewUrl }) => {
   const handlePlanetChange = (e) => {
     e.preventDefault();
     // setNewUrl(`http://localhost:3000/${e.target.text}`);
-    setNewUrl(`http://192.168.1.4:3000/${e.target.text}`);
+    // setNewUrl(`http://192.168.1.4:3000/${e.target.text}`);
+    setNewUrl(`/${e.target.text}`);
   };
 
   return (

@@ -85,17 +85,17 @@ const PlanetDescription = ({
     });
   };
 
-  let newPath = "";
-  let newPath2 = "";
-  if (currentImage) {
-    const changeImgPath = currentImage;
-    const changeImgPath2 = geologyImage;
+  // let newPath = "";
+  // let newPath2 = "";
+  // if (currentImage) {
+  //   const changeImgPath = currentImage;
+  //   const changeImgPath2 = geologyImage;
 
-    const splitedPath = changeImgPath.split("/");
-    const splitedPath2 = changeImgPath2.split("/");
-    newPath = `/src/assets/${splitedPath[2]}`;
-    newPath2 = `/src/assets/${splitedPath2[2]}`;
-  }
+  //   const splitedPath = changeImgPath.split("/");
+  //   const splitedPath2 = changeImgPath2.split("/");
+  //   newPath = `/src/assets/${splitedPath[2]}`;
+  //   newPath2 = `/src/assets/${splitedPath2[2]}`;
+  // }
 
   return (
     <>
@@ -106,8 +106,8 @@ const PlanetDescription = ({
       />
       <Description>
         <ImgContainer showSurface={showGeologyImage} size={images.responsive}>
-          <img className="planet-image" src={newPath} alt="" />
-          <img className="surface-image" src={newPath2} />
+          <img className="planet-image" src={currentImage} alt="" />
+          <img className="surface-image" src={geologyImage} />
         </ImgContainer>
 
         <PlanetFacts>

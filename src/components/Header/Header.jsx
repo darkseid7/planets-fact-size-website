@@ -21,7 +21,9 @@ const Header = ({ planets, setNewUrl }) => {
   return (
     <>
       <HeaderStyledComponent>
-        <Logo>the planets</Logo>
+        <Logo>
+          <a href="/">the planets</a>
+        </Logo>
         <PlanetsWrapper>
           {planets.map(({ name, color }) => {
             const isActive = activeButton === name;

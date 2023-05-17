@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import anime from "animejs/lib/anime.es.js";
 import styled from "styled-components";
 
@@ -44,8 +44,10 @@ const SkyBackground = styled.div`
 `;
 
 const Sky = React.memo(() => {
+  const [resize, setResize] = useState(window.innerWidth);
+
   const state = {
-    num: 100,
+    num: 200,
     vw: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
     vh: Math.max(
       document.documentElement.clientHeight,
@@ -92,7 +94,13 @@ const Sky = React.memo(() => {
       ],
       translateX: 350,
     });
+
+    window.addEventListener("resize", reSizeWindow);
   }, []);
+
+  const reSizeWindow = () => {
+    setResize(window.innerWidth);
+  };
 
   const getViewportX = () => {
     return Math.max(

@@ -36,6 +36,10 @@ function App() {
     getData();
   }, [newUrl]);
 
+  useEffect(() => {
+    window.document.title = `Planet Facts: ${planet.name}`;
+  }, [planet.name]);
+
   //execute this effect when it's first time charging the page
   useEffect(() => {
     if (isFirstLoad) {

@@ -40,6 +40,16 @@ const PlanetDescription = ({
       duration: 600,
       easing: "easeInQuad",
     });
+
+    anime({
+      targets: ".planet-image",
+      translateX: (image) => {
+        return [-image.clientWidth, 0];
+      },
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 1500,
+    });
   }, [images]);
 
   const handleClick = (name) => {
@@ -65,9 +75,20 @@ const PlanetDescription = ({
         setCurrentImage(images?.planet);
     }
 
+    //Animations
+    // anime({
+    //   targets: ".planet-image",
+    //   translateX: (el) => {
+    //     return [el.clientWidth, 0];
+    //   },
+    //   opacity: [0, 1],
+    //   easing: "easeOutExpo",
+    //   duration: 1500,
+    // });
     anime({
       targets: ".planet-image",
       scale: [0.9, 1],
+      opacity: [0, 1],
       duration: 500,
       easing: "easeOutExpo",
     });
@@ -75,15 +96,16 @@ const PlanetDescription = ({
     anime({
       targets: ".information",
       opacity: [0, 1],
-      duration: 600,
+      duration: 400,
       easing: "easeInQuad",
     });
 
     anime({
       targets: ".surface-image",
       opacity: [0, 1],
-      duration: 200,
+      duration: 300,
       easing: "easeInQuad",
+      delay: 500,
     });
   };
 

@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch("./data.json");
+      const response = await fetch("data.json");
       const splitNewUrl = newUrl.split("/");
       const data = await response.json();
       setPlanet(data[`${splitNewUrl[1]}`]);

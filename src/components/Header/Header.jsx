@@ -7,12 +7,14 @@ import {
 } from "./HeaderStyledComponent";
 
 import ResponsiveHeader from "../ResponsiveHeader/ResponsiveHeader";
+import { useState } from "react";
 
 const Header = ({ planets, setNewUrl }) => {
+  const [activeButton, setactiveButton] = useState("mercury");
+
   const handlePlanetChange = (e) => {
     e.preventDefault();
-    // setNewUrl(`http://localhost:3000/${e.target.text}`);
-    // setNewUrl(`http://192.168.1.4:3000/${e.target.text}`);
+    setactiveButton(e.target.text);
     setNewUrl(`/${e.target.text}`);
   };
 
@@ -22,9 +24,14 @@ const Header = ({ planets, setNewUrl }) => {
         <Logo>the planets</Logo>
         <PlanetsWrapper>
           {planets.map(({ name, color }) => {
+            const isActive = activeButton === name;
             return (
-              <Planet color={color} key={name} className="planet">
-                <a href="" onClick={handlePlanetChange}>
+              <Planet color={color} key={name} className="planet ">
+                <a
+                  href=""
+                  className={`${isActive ? "btn-active" : ""}`}
+                  onClick={handlePlanetChange}
+                >
                   {name}
                 </a>
               </Planet>

@@ -38,7 +38,7 @@ export const MenuResponsive = styled.div`
   height: 120vh;
   overflow-y: auto;
   z-index: 999;
-  display: ${({ showMenu }) => showMenu};
+  display: none;
 
   @media only screen and (max-width: 664px) {
     display: ${({ showMenu }) => showMenu};

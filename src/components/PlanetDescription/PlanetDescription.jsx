@@ -9,7 +9,9 @@ import {
   Facts,
 } from "./PlanetDescriptionStyledComponent";
 import ResponsiveButtonInfo from "../ResponsiveButtonInfo/ResponsiveButtonInfo";
+
 import svgSourceIcon from "../../assets/icon-source.svg";
+
 const PlanetDescription = ({
   color,
   images,
@@ -84,18 +86,6 @@ const PlanetDescription = ({
       easing: "easeInQuad",
     });
   };
-
-  // let newPath = "";
-  // let newPath2 = "";
-  // if (currentImage) {
-  //   const changeImgPath = currentImage;
-  //   const changeImgPath2 = geologyImage;
-
-  //   const splitedPath = changeImgPath.split("/");
-  //   const splitedPath2 = changeImgPath2.split("/");
-  //   newPath = `/src/assets/${splitedPath[2]}`;
-  //   newPath2 = `/src/assets/${splitedPath2[2]}`;
-  // }
 
   return (
     <>

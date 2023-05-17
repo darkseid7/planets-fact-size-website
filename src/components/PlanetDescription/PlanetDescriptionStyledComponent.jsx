@@ -15,7 +15,7 @@ export const Description = styled.div`
     padding-top: 4rem;
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     padding-top: 0;
   }
 `;
@@ -61,7 +61,7 @@ export const ImgContainer = styled.div`
     }
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     height: 300px;
     img {
       width: ${({ size }) => size};
@@ -150,7 +150,7 @@ export const Facts = styled.div`
     }
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     width: 100%;
 
     .name {
@@ -217,7 +217,7 @@ export const ButtonInfo = styled.div`
     }
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     display: none;
   }
 `;

@@ -13,7 +13,7 @@ const InfoWrapper = styled.ul`
   padding: 30px 0 60px 0;
   text-transform: uppercase;
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     display: block;
     padding: 1.5rem;
   }
@@ -47,6 +47,13 @@ const Info = styled.li`
     font-family: ${fontAntonio};
   }
 
+  @media only screen and (max-width: 1030px) {
+    padding: 12px;
+    .info-value {
+      font-size: 30px;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     width: 164px;
     margin: 0 6px;
@@ -64,7 +71,7 @@ const Info = styled.li`
     }
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     width: 100%;
     margin: 0.5rem 0;
     flex-direction: initial;

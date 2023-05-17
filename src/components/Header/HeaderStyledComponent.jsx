@@ -66,8 +66,6 @@ export const PlanetsWrapper = styled.ul`
 `;
 
 export const Planet = styled.li`
-  /* padding: 4px 0; */
-
   cursor: pointer;
 
   a {
@@ -92,15 +90,23 @@ export const Planet = styled.li`
       background: ${({ color }) => color};
     }
 
-    &:hover {
+    &.btn-active {
       &::before {
         opacity: 1;
         transform: scaleX(1);
         transition: opacity, transform 0.2s ease-in;
       }
-      opacity: 1;
+    }
 
+    &:hover {
+      opacity: 1;
       color: #38384f;
+
+      &::before {
+        opacity: 1;
+        transform: scaleX(1);
+        transition: opacity, transform 0.2s ease-in;
+      }
     }
   }
 `;

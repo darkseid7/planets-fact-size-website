@@ -13,9 +13,7 @@ const MainApp = styled.div`
 function App() {
   const [planet, setPlanet] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  // const [newUrl, setNewUrl] = useState("http://localhost:3000/mercury");
-  // const [newUrl, setNewUrl] = useState("http://192.168.1.4:3000/earth");
-  const [newUrl, setNewUrl] = useState("/earth");
+  const [newUrl, setNewUrl] = useState("/mercury");
 
   const Planets = [
     { name: "mercury", color: "#419ebb" },

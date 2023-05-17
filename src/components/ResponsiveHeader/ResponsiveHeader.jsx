@@ -21,15 +21,15 @@ const ResponsiveHeader = ({ planets, setNewUrl }) => {
   const showMobileMenu = (e) => {
     e.preventDefault();
     if (showResponsiveMenu) {
-      setTimeout(() => {
-        anime({
-          targets: ".planet-option",
-          translateX: [0, -370],
-          duration: 800,
-          delay: anime.stagger(60),
-        });
-        setShowResponsiveMenu(false);
+      anime({
+        targets: ".planet-option",
+        translateX: [0, -370],
+        duration: 800,
+        delay: anime.stagger(60),
       });
+      setTimeout(() => {
+        setShowResponsiveMenu(false);
+      }, 800);
     } else {
       anime({
         targets: ".planet-option",
@@ -43,8 +43,6 @@ const ResponsiveHeader = ({ planets, setNewUrl }) => {
 
   const handlePlanetChange = (e) => {
     e.preventDefault();
-    // setNewUrl(`http://localhost:3000/${e.target.text}`);
-    // setNewUrl(`http://192.168.1.4:3000/${e.target.text}`);
     setNewUrl(`/${e.target.text}`);
 
     anime({

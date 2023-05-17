@@ -13,7 +13,7 @@ const MenuContainer = styled.div`
     border-bottom: 1px solid rgba(151, 151, 151, 0.2);
   }
 
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 664px) {
     display: block;
   }
 `;
@@ -25,11 +25,16 @@ const MenuItem = styled.div`
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  opacity: ${({ active }) => (active ? 1 : 0.5)};
-  border-bottom: ${({ active, color }) =>
-    active ? `4px solid ${color}` : "4px solid transparent"};
+  opacity: 0.5;
+  border-bottom: 4px solid transparent;
+
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+  &.btn-active {
+    opacity: 1;
+    border-bottom: ${({ color }) => `4px solid ${color}`};
+  }
 
   &:hover {
     opacity: 1;
@@ -56,7 +61,7 @@ const ResponsiveButtonInfo = ({ color, handleClick, selectedButton }) => {
             color={color}
             name="overview"
             onClick={() => handleButtonClick("overview")}
-            active={active === "overview"}
+            className={active === "overview" ? "btn-active" : ""}
           >
             Overview
           </MenuItem>
@@ -64,7 +69,7 @@ const ResponsiveButtonInfo = ({ color, handleClick, selectedButton }) => {
             color={color}
             name="internal-structure"
             onClick={() => handleButtonClick("internal-structure")}
-            active={active === "structure"}
+            className={active === "internal-structure" ? "btn-active" : ""}
           >
             Structure
           </MenuItem>
@@ -72,7 +77,7 @@ const ResponsiveButtonInfo = ({ color, handleClick, selectedButton }) => {
             color={color}
             name="surface-geology"
             onClick={() => handleButtonClick("surface-geology")}
-            active={active === "surface"}
+            className={active === "surface-geology" ? "btn-active" : ""}
           >
             Surface
           </MenuItem>

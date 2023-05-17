@@ -30,7 +30,9 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch("/data.json");
+      const response = await fetch(
+        "https://github.com/darkseid7/planets-fact-size-website/blob/master/public/data.json"
+      );
       const splitNewUrl = newUrl.split("/");
       const data = await response.json();
       setPlanet(data[`${splitNewUrl[1]}`]);

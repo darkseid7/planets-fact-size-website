@@ -49,6 +49,16 @@ const PlanetDescription = ({
       opacity: [0, 1],
       easing: "easeOutExpo",
       duration: 1500,
+      complete: () => {
+        anime({
+          targets: [".planet-image", ".surface-image"],
+          translateY: "10px",
+          direction: "alternate",
+          loop: true,
+          easing: "easeInOutQuad",
+          duration: 2000,
+        });
+      },
     });
   }, [images]);
 
@@ -85,13 +95,13 @@ const PlanetDescription = ({
     //   easing: "easeOutExpo",
     //   duration: 1500,
     // });
-    anime({
-      targets: ".planet-image",
-      scale: [0.9, 1],
-      opacity: [0, 1],
-      duration: 400,
-      easing: "easeOutExpo",
-    });
+    // anime({
+    //   targets: ".planet-image",
+    //   scale: [0.9, 1],
+    //   opacity: [0, 1],
+    //   duration: 400,
+    //   easing: "easeOutExpo",
+    // });
 
     anime({
       targets: ".information",

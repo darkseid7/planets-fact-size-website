@@ -21,19 +21,12 @@ const ResponsiveHeader = ({ planets, setNewUrl }) => {
   const showMobileMenu = (e) => {
     e.preventDefault();
     if (showResponsiveMenu) {
-      anime({
-        targets: ".planet-option",
-        translateX: [0, -370],
-        duration: 800,
-        delay: anime.stagger(60),
-      });
-      setTimeout(() => {
-        setShowResponsiveMenu(false);
-      }, 800);
+      setShowResponsiveMenu(false);
     } else {
       anime({
         targets: ".planet-option",
         translateX: [-270, 0],
+        opacity: [0, 1],
         duration: 1000,
         delay: anime.stagger(50),
       });
@@ -44,16 +37,7 @@ const ResponsiveHeader = ({ planets, setNewUrl }) => {
   const handlePlanetChange = (e) => {
     e.preventDefault();
     setNewUrl(`/${e.target.text}`);
-
-    anime({
-      targets: ".planet-option",
-      duration: 900,
-      translateX: [0, -390],
-      delay: anime.stagger(50),
-    });
-    setTimeout(() => {
-      setShowResponsiveMenu(false);
-    }, 700);
+    setShowResponsiveMenu(false);
   };
 
   return (
@@ -67,7 +51,10 @@ const ResponsiveHeader = ({ planets, setNewUrl }) => {
         </div>
       </LogoResponsive>
 
-      <MenuResponsive showMenu={() => (showResponsiveMenu ? "block" : "none")}>
+      <MenuResponsive
+        className="menu-responsive"
+        showMenu={() => (showResponsiveMenu ? "block" : "none")}
+      >
         <ResponsiveItems>
           {planetNames.map(({ name, color }) => {
             return (

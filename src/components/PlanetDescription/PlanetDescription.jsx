@@ -89,7 +89,7 @@ const PlanetDescription = ({
       targets: ".planet-image",
       scale: [0.9, 1],
       opacity: [0, 1],
-      duration: 500,
+      duration: 400,
       easing: "easeOutExpo",
     });
 
@@ -103,9 +103,9 @@ const PlanetDescription = ({
     anime({
       targets: ".surface-image",
       opacity: [0, 1],
-      duration: 300,
+      duration: 200,
       easing: "easeInQuad",
-      delay: 500,
+      delay: 200,
     });
   };
 

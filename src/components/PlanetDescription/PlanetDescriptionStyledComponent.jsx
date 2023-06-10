@@ -32,7 +32,8 @@ export const ImgContainer = styled.div`
     position: absolute;
 
     &.surface-image {
-      visibility: ${({ showSurface }) => showSurface};
+      display: ${({ showSurface }) =>
+        showSurface === "visible" ? "block" : "none"};
       width: 163px;
       height: 199px;
       z-index: 1;

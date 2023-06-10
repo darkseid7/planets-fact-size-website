@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import anime from "animejs/lib/anime.es.js";
+import { motion } from "framer-motion";
 import {
   Description,
   ImgContainer,
@@ -24,6 +24,7 @@ const PlanetDescription = ({
     "./assets/planet-mercury.svg"
   );
   const [selectedButton, setSelectedButton] = useState("overview");
+  const [isHandleClick, setIsHandleClick] = useState(false);
   const [geologyImage, setGeologyImage] = useState(images.geology);
   const [showGeologyImage, setShowGeologyImage] = useState("hidden");
   const [sourceLink, setSourceLink] = useState(overview.source);
@@ -33,37 +34,12 @@ const PlanetDescription = ({
     setSelectedButton("overview");
     setGeologyImage(images.geology);
     setShowGeologyImage("hidden");
-
-    anime({
-      targets: [".planet-facts"],
-      opacity: [0, 1],
-      duration: 600,
-      easing: "easeInQuad",
-    });
-
-    anime({
-      targets: ".planet-image",
-      translateX: (image) => {
-        return [-image.clientWidth, 0];
-      },
-      opacity: [0, 1],
-      easing: "easeOutExpo",
-      duration: 1500,
-      complete: () => {
-        anime({
-          targets: [".planet-image", ".surface-image"],
-          translateY: "10px",
-          direction: "alternate",
-          loop: true,
-          easing: "easeInOutQuad",
-          duration: 2000,
-        });
-      },
-    });
+    setIsHandleClick(false);
   }, [images]);
 
   const handleClick = (name) => {
     setSelectedButton(name);
+    setIsHandleClick(true);
     switch (name) {
       case "overview":
         setCurrentImage(images?.planet);
@@ -84,39 +60,6 @@ const PlanetDescription = ({
       default:
         setCurrentImage(images?.planet);
     }
-
-    //Animations
-    // anime({
-    //   targets: ".planet-image",
-    //   translateX: (el) => {
-    //     return [el.clientWidth, 0];
-    //   },
-    //   opacity: [0, 1],
-    //   easing: "easeOutExpo",
-    //   duration: 1500,
-    // });
-    // anime({
-    //   targets: ".planet-image",
-    //   scale: [0.9, 1],
-    //   opacity: [0, 1],
-    //   duration: 400,
-    //   easing: "easeOutExpo",
-    // });
-
-    anime({
-      targets: ".information",
-      opacity: [0, 1],
-      duration: 400,
-      easing: "easeInQuad",
-    });
-
-    anime({
-      targets: ".surface-image",
-      opacity: [0, 1],
-      duration: 200,
-      easing: "easeInQuad",
-      delay: 200,
-    });
   };
 
   return (
@@ -128,8 +71,25 @@ const PlanetDescription = ({
       />
       <Description>
         <ImgContainer showSurface={showGeologyImage} size={images.responsive}>
-          <img className="planet-image" src={currentImage} alt="" />
-          <img className="surface-image" src={geologyImage} />
+          <motion.img
+            key={currentImage}
+            initial={{ x: isHandleClick ? 0 : -400 }}
+            animate={{ x: 0, scale: isHandleClick ? [0.9, 1] : 1 }}
+            transition={{ duration: 0.5 }}
+            className="planet-image"
+            src={currentImage}
+            alt=""
+          />
+
+          <motion.img
+            key={geologyImage}
+            animate={{
+              opacity: selectedButton === "surface-geology" ? 1 : 0,
+            }}
+            transition={{ duration: 0.2, delay: 0.2 }}
+            className="surface-image"
+            src={geologyImage}
+          />
         </ImgContainer>
 
         <PlanetFacts>

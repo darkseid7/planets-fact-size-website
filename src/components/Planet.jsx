@@ -2,10 +2,10 @@
 import styled from "styled-components";
 import PlanetDescription from "./PlanetDescription/PlanetDescription";
 import PlanetInfo from "./PlanetInfo";
+import { motion } from "framer-motion";
 
-const PlanetContainer = styled.section`
+const PlanetContainer = styled(motion.section)`
   text-align: center;
-
   max-width: 1150px;
   margin: 0 auto;
 `;

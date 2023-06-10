@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import anime from "animejs/lib/anime.es.js";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 import Planet from "./components/Planet";
 import Header from "./components/Header/Header";
 import Sky from "./components/Sky";
-const MainApp = styled.div`
+const MainApp = styled(motion.div)`
   max-width: 1440px;
   margin: 0 auto;
 `;
@@ -40,29 +40,20 @@ function App() {
     window.document.title = `Planet Facts: ${planet.name}`;
   }, [planet.name]);
 
-  //execute this effect when it's first time charging the page
   useEffect(() => {
     if (isFirstLoad) {
-      anime({
-        targets: "#root",
-        opacity: [0, 1],
-        duration: 1000,
-        easing: "easeInQuad",
-        complete: () => {
-          setIsFirstLoad(!isFirstLoad);
-        },
-      });
+      setIsFirstLoad(!isFirstLoad);
     }
   }, [isFirstLoad]);
 
   if (planet.length === 0) {
-    return <h1>xd</h1>;
+    return <h1>Loading</h1>;
   }
 
   return (
     <>
       <Sky />
-      <MainApp>
+      <MainApp initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <Header planets={Planets} newUrl={newUrl} setNewUrl={setNewUrl} />
         <Planet planet={planet} />
       </MainApp>

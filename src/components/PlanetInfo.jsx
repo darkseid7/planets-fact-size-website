@@ -85,15 +85,6 @@ const Info = styled.li`
 `;
 
 const PlanetInfo = ({ rotation, revolution, radius, temp }) => {
-  useEffect(() => {
-    anime({
-      targets: [".planet-info"],
-      opacity: [0, 1],
-      duration: 600,
-      easing: "easeInQuad",
-    });
-  }, [rotation]);
-
   return (
     <>
       <InfoWrapper className="planet-info">

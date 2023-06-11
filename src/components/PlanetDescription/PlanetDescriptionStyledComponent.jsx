@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const fontSpartan = "Spartan";
 
@@ -172,7 +173,7 @@ export const Facts = styled.div`
   }
 `;
 
-export const ButtonInfo = styled.div`
+export const ButtonInfo = styled(motion.div)`
   padding: 2rem 0;
   display: grid;
 
@@ -192,16 +193,10 @@ export const ButtonInfo = styled.div`
     color: #fff;
     cursor: pointer;
     text-align: start;
-    transition: transform 0.3s ease-out;
 
     span {
       padding: 0 25px 0 28px;
       opacity: 0.5;
-    }
-
-    &:hover {
-      background-color: #38384f;
-      transform: scale(1.02);
     }
 
     &.btn-active {

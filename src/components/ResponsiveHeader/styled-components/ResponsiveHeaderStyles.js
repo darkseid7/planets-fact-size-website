@@ -1,34 +1,6 @@
 import styled from "styled-components";
 
 const fontSpartan = "Spartan";
-export const LogoResponsive = styled.div`
-  display: none;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgb(151, 151, 151, 0.2);
-  .logo-wrapper {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .header-logo-text {
-      text-align: start;
-      padding: 0px !important;
-      font-size: 28px;
-    }
-
-    .header-logo-movile {
-      display: block;
-    }
-    .icon {
-      display: block;
-    }
-  }
-
-  @media only screen and (max-width: 664px) {
-    display: block;
-  }
-`;
 
 export const MenuResponsive = styled.div`
   width: 100%;

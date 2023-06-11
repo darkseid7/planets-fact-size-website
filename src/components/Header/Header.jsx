@@ -1,46 +1,49 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import {
-  HeaderStyledComponent,
-  Logo,
-  PlanetsWrapper,
-  Planet,
-} from "./HeaderStyledComponent";
+import styled from "styled-components";
+
+import { fontAntonio, media } from "../../styled-components/Global";
+
+import Logo from "./Logo/logo";
+import Menu from "./Menu/Menu";
+import MenuItem from "./Menu/components/MenuItem/MenuItem";
 
 import ResponsiveHeader from "../ResponsiveHeader/ResponsiveHeader";
-import { usePlanets } from "../../hooks/Planets";
 
-const Header = ({ planets, activeButton, setActiveButton }) => {
-  const { setNewUrl } = usePlanets();
-  const handlePlanetChange = (e) => {
-    e.preventDefault();
-    setActiveButton(e.target.text);
-  };
+const StyledHeader = styled.header`
+  padding: 1rem;
+  font-family: ${fontAntonio};
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(151, 151, 151, 0.2);
 
+  .topnav,
+  .icon {
+    display: none;
+  }
+
+  ${media.tablet} {
+    padding: 0;
+    display: block;
+    height: 159px;
+  }
+
+  ${media.phone} {
+    display: none;
+  }
+`;
+
+const Header = ({ setNewUrl }) => {
   return (
     <>
-      <HeaderStyledComponent>
-        <Logo>
-          <a href="/">the planets</a>
-        </Logo>
-        <PlanetsWrapper>
-          {planets.map(({ name, color }) => {
-            const isActive = activeButton === name;
-            return (
-              <Planet color={color} key={name} className="planet ">
-                <a
-                  href=""
-                  className={`${isActive ? "btn-active" : ""}`}
-                  onClick={handlePlanetChange}
-                >
-                  {name}
-                </a>
-              </Planet>
-            );
-          })}
-        </PlanetsWrapper>
-      </HeaderStyledComponent>
-      <ResponsiveHeader planets={planets} setNewUrl={setNewUrl} />
+      <StyledHeader>
+        <Logo />
+        <Menu>
+          <MenuItem setNewUrl={setNewUrl} />
+        </Menu>
+      </StyledHeader>
+      <ResponsiveHeader setNewUrl={setNewUrl} />
     </>
   );
 };

@@ -7,7 +7,7 @@ import {
   PlanetFacts,
   ButtonInfo,
   Facts,
-} from "./PlanetDescriptionStyledComponent";
+} from "./styled-components/PlanetDescriptionStyles";
 import ResponsiveButtonInfo from "../ResponsiveButtonInfo/ResponsiveButtonInfo";
 
 import svgSourceIcon from "../../assets/icon-source.svg";

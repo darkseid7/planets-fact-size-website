@@ -1,38 +1,20 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import anime from "animejs";
+import { PlanetsArray } from "../../utils/PlanetsArray";
 
-import movileMenu from "../../assets/icon-hamburger.svg";
 import iconChevron from "../../assets/icon-chevron.svg";
 import {
-  LogoResponsive,
   MenuResponsive,
   ResponsiveItems,
   ResponsiveItem,
   ItemName,
   Circle,
-} from "./ResponsiveHeaderStyledComponent";
+} from "./styled-components/ResponsiveHeaderStyles";
 
-const ResponsiveHeader = ({ planets, setNewUrl }) => {
+import Logo from "./Logo/Logo";
+
+const ResponsiveHeader = ({ setNewUrl }) => {
   const [showResponsiveMenu, setShowResponsiveMenu] = useState(false);
-
-  const planetNames = planets;
-
-  const showMobileMenu = (e) => {
-    e.preventDefault();
-    if (showResponsiveMenu) {
-      setShowResponsiveMenu(false);
-    } else {
-      anime({
-        targets: ".planet-option",
-        translateX: [-270, 0],
-        opacity: [0, 1],
-        duration: 1000,
-        delay: anime.stagger(50),
-      });
-      setShowResponsiveMenu(true);
-    }
-  };
 
   const handlePlanetChange = (e) => {
     e.preventDefault();
@@ -42,21 +24,17 @@ const ResponsiveHeader = ({ planets, setNewUrl }) => {
 
   return (
     <>
-      <LogoResponsive>
-        <div className="logo-wrapper">
-          <h2 className="header-logo-text header-logo-movile">the planets</h2>
-          <a href="" className="icon" onClick={showMobileMenu}>
-            <img src={movileMenu} alt="" />
-          </a>
-        </div>
-      </LogoResponsive>
+      <Logo
+        showResponsiveMenu={showResponsiveMenu}
+        setShowResponsiveMenu={setShowResponsiveMenu}
+      />
 
       <MenuResponsive
         className="menu-responsive"
         showMenu={() => (showResponsiveMenu ? "block" : "none")}
       >
         <ResponsiveItems>
-          {planetNames.map(({ name, color }) => {
+          {PlanetsArray.map(({ name, color }) => {
             return (
               <ResponsiveItem className="planet-option" key={name}>
                 <ItemName>

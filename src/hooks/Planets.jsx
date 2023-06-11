@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export const usePlanets = () => {
   const [data, setData] = useState([]);
@@ -6,23 +6,17 @@ export const usePlanets = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getData = () => {
+    async function getData() {
+      const response = await fetch("/data.json");
       const splitNewUrl = newUrl.split("/");
-      setLoading(true);
-      fetch("/data.json")
-        .then((response) => response.json())
-        .then((data) => {
-          setData(data[`${splitNewUrl[1]}`]);
-          setLoading(false);
-        });
-      // .finally(() => {
-      //   setTimeout(() => {
-      //     setLoading(false);
-      //   }, 400);
-      // });
-    };
+      const data = await response.json();
+      setData(data[`${splitNewUrl[1]}`]);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
     getData();
   }, [newUrl]);
 
-  return { data, newUrl, setNewUrl, loading };
+  return { data, setNewUrl, loading };
 };

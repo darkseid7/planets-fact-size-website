@@ -10,23 +10,35 @@ const PlanetContainer = styled(motion.section)`
   margin: 0 auto;
 `;
 const Planet = ({ planet }) => {
+  const {
+    images,
+    name,
+    overview,
+    structure,
+    geology,
+    color,
+    rotation,
+    revolution,
+    radius,
+    temperature,
+  } = planet;
   return (
     <>
       <PlanetContainer>
         <PlanetDescription
-          images={planet.images}
-          name={planet.name}
-          overview={planet.overview}
-          structure={planet.structure}
-          geology={planet.geology}
-          color={planet.color}
+          images={images}
+          name={name}
+          overview={overview}
+          structure={structure}
+          geology={geology}
+          color={color}
         />
 
         <PlanetInfo
-          rotation={planet.rotation}
-          revolution={planet.revolution}
-          radius={planet.radius}
-          temp={planet.temperature}
+          rotation={rotation}
+          revolution={revolution}
+          radius={radius}
+          temp={temperature}
         />
       </PlanetContainer>
     </>

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import {
   HeaderStyledComponent,
   Logo,
@@ -7,15 +8,13 @@ import {
 } from "./HeaderStyledComponent";
 
 import ResponsiveHeader from "../ResponsiveHeader/ResponsiveHeader";
-import { useState } from "react";
+import { usePlanets } from "../../hooks/Planets";
 
-const Header = ({ planets, setNewUrl }) => {
-  const [activeButton, setactiveButton] = useState("mercury");
-
+const Header = ({ planets, activeButton, setActiveButton }) => {
+  const { setNewUrl } = usePlanets();
   const handlePlanetChange = (e) => {
     e.preventDefault();
-    setactiveButton(e.target.text);
-    setNewUrl(`/${e.target.text}`);
+    setActiveButton(e.target.text);
   };
 
   return (

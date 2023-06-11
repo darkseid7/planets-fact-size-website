@@ -46,17 +46,45 @@ function App() {
     }
   }, [isFirstLoad]);
 
-  if (planet.length === 0) {
-    return <h1>Loading</h1>;
-  }
-
   return (
     <>
       <Sky />
-      <MainApp initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <Header planets={Planets} newUrl={newUrl} setNewUrl={setNewUrl} />
-        <Planet planet={planet} />
-      </MainApp>
+      {planet.length === 0 ? (
+        <>
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              display: "grid",
+              placeItems: "center",
+            }}
+            className=""
+          >
+            <motion.img
+              initial={{
+                width: "100px",
+                display: "grid",
+                placeItems: "center",
+              }}
+              animate={{
+                scale: [1.2, 1],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                repeatType: "reverse",
+              }}
+              src="./assets/planet-earth.svg"
+              alt=""
+            />
+          </div>
+        </>
+      ) : (
+        <MainApp initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Header planets={Planets} newUrl={newUrl} setNewUrl={setNewUrl} />
+          <Planet planet={planet} />
+        </MainApp>
+      )}
     </>
   );
 }

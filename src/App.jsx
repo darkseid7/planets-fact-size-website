@@ -13,7 +13,7 @@ const MainApp = styled(motion.div)`
 function App() {
   const [planet, setPlanet] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const [newUrl, setNewUrl] = useState("/mercury");
+  const [newUrl, setNewUrl] = useState("/earth");
 
   const Planets = [
     { name: "mercury", color: "#419ebb" },

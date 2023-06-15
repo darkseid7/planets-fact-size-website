@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { fontAntonio, media } from "../../styled-components/Global";
 
-import Logo from "./Logo/logo";
+import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
 import MenuItem from "./Menu/components/MenuItem/MenuItem";
 

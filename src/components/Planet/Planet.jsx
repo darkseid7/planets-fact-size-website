@@ -1,39 +1,35 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import styled from "styled-components";
-import PlanetDescription from "./PlanetDescription/PlanetDescription";
-import PlanetInfo from "./PlanetInfo";
 import { motion } from "framer-motion";
 
+import PlanetDetails from "./PlanetDetails/PlanetDetails";
+import PlanetInfo from "../PlanetInfo";
+
 const PlanetContainer = styled(motion.section)`
-  text-align: center;
   max-width: 1150px;
   margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+
+  .container {
+    padding: 0 18px;
+    display: flex;
+    justify-content: space-between;
+
+    .description {
+      max-width: 350px;
+    }
+  }
 `;
+
 const Planet = ({ planet }) => {
-  const {
-    images,
-    name,
-    overview,
-    structure,
-    geology,
-    color,
-    rotation,
-    revolution,
-    radius,
-    temperature,
-  } = planet;
+  const { rotation, revolution, radius, temperature } = planet;
+
   return (
     <>
       <PlanetContainer>
-        <PlanetDescription
-          images={images}
-          name={name}
-          overview={overview}
-          structure={structure}
-          geology={geology}
-          color={color}
-        />
-
+        <PlanetDetails />
         <PlanetInfo
           rotation={rotation}
           revolution={revolution}

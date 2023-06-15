@@ -1,34 +1,27 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const fontSpartan = "Spartan";
+import { fontSpartan } from "../../../../../styled-components/Global";
 
-export const MenuResponsive = styled.div`
-  width: 100%;
-  position: absolute;
-  background-color: #070724;
-  text-transform: uppercase;
-  height: 120vh;
-  overflow-y: auto;
-  z-index: 999;
-  display: none;
+export const StyledMenuItem = styled.ul`
+  padding: 10px 20px;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
 
-  @media only screen and (max-width: 664px) {
-    display: ${({ showMenu }) => showMenu};
+  img {
+    width: 6px;
+    height: 8px;
   }
 `;
 
-export const ResponsiveItems = styled.ul`
-  padding: 20px;
-  display: block;
-`;
-
-export const ResponsiveItem = styled.li`
+export const Item = styled(motion.li)`
   padding: 31px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #38384f;
-
+  cursor: pointer;
   img {
     width: 6px;
     height: 8px;

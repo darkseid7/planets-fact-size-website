@@ -19,6 +19,9 @@ export const StyledMenu = styled.ul`
     margin: 0 auto;
     justify-content: space-around;
   }
+  ${media.phone} {
+    display: none;
+  }
 `;
 
 function Menu({ children }) {

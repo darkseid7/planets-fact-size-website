@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { media } from "../../../styled-components/Global";
 
 const fontSpartan = "Spartan";
 
@@ -53,6 +54,14 @@ export const ImgContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  ${media} {
+    img {
+      &.surface-image {
+        top: 380px;
+      }
+    }
   }
 
   @media only screen and (max-width: 768px) {

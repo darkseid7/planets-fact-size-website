@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import PlanetDetails from "./PlanetDetails/PlanetDetails";
-import PlanetInfo from "../PlanetInfo";
 import PlanetFacts from "./PanetFacts/PlanetFacts";
 
 const PlanetContainer = styled(motion.section)`
@@ -25,20 +24,12 @@ const PlanetContainer = styled(motion.section)`
   }
 `;
 
-const Planet = ({ planet }) => {
-  const { rotation, revolution, radius, temperature } = planet;
-
+const Planet = () => {
   return (
     <>
       <PlanetContainer>
         <PlanetDetails />
         <PlanetFacts />
-        {/* <PlanetInfo
-          rotation={rotation}
-          revolution={revolution}
-          radius={radius}
-          temp={temperature}
-        /> */}
       </PlanetContainer>
     </>
   );

@@ -12,16 +12,6 @@ const PlanetContainer = styled(motion.section)`
   padding-right: 18px;
   padding-left: 18px;
   text-align: center;
-
-  .container {
-    padding: 0 18px;
-    display: flex;
-    justify-content: space-between;
-
-    .description {
-      max-width: 350px;
-    }
-  }
 `;
 
 const Planet = () => {

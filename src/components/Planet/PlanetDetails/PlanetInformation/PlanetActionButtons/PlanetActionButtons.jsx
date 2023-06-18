@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -63,17 +62,13 @@ const buttonVariants = {
   },
 };
 
-function PlanetActionButtons({ button, setButton, setIsHandleClick }) {
-  const { dataP } = usePlanetDataStorage();
+function PlanetActionButtons({ button, setButton }) {
+  const { dataP, setExecuteAnimation } = usePlanetDataStorage();
   const { color } = dataP;
-
-  useEffect(() => {
-    setIsHandleClick(false);
-  }, [setIsHandleClick]);
 
   function handleClick(buttonName) {
     setButton(buttonName);
-    setIsHandleClick(true);
+    setExecuteAnimation();
   }
 
   return (

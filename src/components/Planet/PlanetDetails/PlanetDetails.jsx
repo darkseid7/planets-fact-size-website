@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import PlanetImage from "./PlanetImage/PlanetImage";
@@ -9,7 +9,7 @@ const StyledPlanetDetails = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 18px;
+
   transition: all 0.5s ease-out;
 
   @media only screen and (max-width: 1060px) {
@@ -24,16 +24,13 @@ const StyledPlanetDetails = styled.section`
 
 function PlanetDetails() {
   const [selectedButton, setSelectedButton] = useState("overview");
-  const [isHandleClick, setIsHandleClick] = useState(false);
 
   return (
     <StyledPlanetDetails>
-      <PlanetImage button={selectedButton} isHandleClick={isHandleClick} />
+      <PlanetImage button={selectedButton} />
       <PlanetInformation
         button={selectedButton}
         setButton={setSelectedButton}
-        isHandleClick={isHandleClick}
-        setIsHandleClick={setIsHandleClick}
       />
     </StyledPlanetDetails>
   );

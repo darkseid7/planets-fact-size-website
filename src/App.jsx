@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import { MainContainerApp } from "./styled-components/Layout";
 import { usePlanetDataStorage } from "./store/PlanetsData";
 
@@ -13,11 +11,6 @@ import { usePlanets } from "./hooks/Planets";
 function App() {
   const { setNewUrl, loading } = usePlanets();
   const { dataP } = usePlanetDataStorage();
-
-  // const [planet, setPlanet] = useState(data);
-  // useEffect(() => {
-  //   setPlanet(data);
-  // }, [data]);
 
   if (loading) {
     return <Loader />;

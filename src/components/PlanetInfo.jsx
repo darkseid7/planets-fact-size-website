@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import anime from "animejs";
-import { useEffect } from "react";
 import styled from "styled-components";
 
 const fontSpartan = "Spartan";

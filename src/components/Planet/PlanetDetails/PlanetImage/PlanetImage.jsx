@@ -32,7 +32,7 @@ const StyledPlanetImage = styled.div`
   }
 `;
 
-export const Image = styled(motion.img)`
+const Image = styled(motion.img)`
   position: absolute;
 
   &.surface-image {
@@ -65,8 +65,8 @@ export const Image = styled(motion.img)`
   }
 `;
 
-function PlanetImage({ button, isHandleClick }) {
-  const { dataP } = usePlanetDataStorage();
+function PlanetImage({ button }) {
+  const { dataP, executeAnimation } = usePlanetDataStorage();
   const { geology, internal, planet, responsive } = dataP.images;
 
   const [currentImage, setCurrentImage] = useState(planet);
@@ -75,12 +75,12 @@ function PlanetImage({ button, isHandleClick }) {
 
   const variants = {
     event: {
-      x: isHandleClick ? 0 : [-400, 0],
-      scale: isHandleClick ? [0.9, 1] : 1,
+      x: executeAnimation ? [-400, 0] : 0,
+      scale: executeAnimation ? 1 : [0.9, 1],
       y: [10, -10],
     },
     transicion: {
-      duration: isHandleClick ? 1 : 0.5,
+      duration: executeAnimation ? 0.5 : 1,
       y: { repeat: Infinity, duration: 5, repeatType: "reverse" },
     },
   };
@@ -89,9 +89,11 @@ function PlanetImage({ button, isHandleClick }) {
     switch (button) {
       case "overview":
         setCurrentImage(planet);
+        setShowGeologyImage(false);
         break;
       case "internal-structure":
         setCurrentImage(internal);
+        setShowGeologyImage(false);
         break;
       case "surface-geology":
         setCurrentImage(planet);
@@ -104,25 +106,26 @@ function PlanetImage({ button, isHandleClick }) {
   }, [planet, internal, geology, button]);
 
   return (
-    <StyledPlanetImage size={responsive}>
-      <AnimatePresence>
-        <Image
-          key={isHandleClick}
-          variants={variants}
-          animate="event"
-          transition={variants.transicion}
-          className="planet-image"
-          src={currentImage}
-          alt="currentImage"
-        />
+    <StyledPlanetImage>
+      <Image
+        key={[planet, button]}
+        variants={variants}
+        animate="event"
+        transition={variants.transicion}
+        className="planet-image"
+        src={currentImage}
+        alt="currentImage"
+        size={responsive}
+      />
 
+      <AnimatePresence>
         {showGeologyImage ? (
           <Image
-            key={geologyImage}
-            animate={{
-              opacity: button === "surface-geology" ? 1 : 0,
-            }}
-            transition={{ duration: 0.2, delay: 0.2 }}
+            key={planet}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0 }}
             className="surface-image"
             src={geologyImage}
           />

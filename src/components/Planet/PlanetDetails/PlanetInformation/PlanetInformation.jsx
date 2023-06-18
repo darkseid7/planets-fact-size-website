@@ -19,21 +19,11 @@ const StyledPlanetInformation = styled.div`
   }
 `;
 
-function PlanetInformation({
-  button,
-  setButton,
-  isHandleClick,
-  setIsHandleClick,
-}) {
+function PlanetInformation({ button, setButton }) {
   return (
     <StyledPlanetInformation>
       <PlanetTextContent button={button} />
-      <PlanetActionButtons
-        button={button}
-        setButton={setButton}
-        isHandleClick={isHandleClick}
-        setIsHandleClick={setIsHandleClick}
-      />
+      <PlanetActionButtons button={button} setButton={setButton} />
     </StyledPlanetInformation>
   );
 }

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { usePlanetDataStorage } from "../store/PlanetsData";
 
 export const usePlanets = () => {
-  const [data, setData] = useState([]);
+  const { setDataPlanet } = usePlanetDataStorage();
+
   const [newUrl, setNewUrl] = useState("/earth");
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +12,8 @@ export const usePlanets = () => {
       const response = await fetch("/data.json");
       const splitNewUrl = newUrl.split("/");
       const data = await response.json();
-      setData(data[`${splitNewUrl[1]}`]);
+      setDataPlanet(data[`${splitNewUrl[1]}`]);
+
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -18,5 +21,5 @@ export const usePlanets = () => {
     getData();
   }, [newUrl]);
 
-  return { data, setNewUrl, loading };
+  return { setNewUrl, loading };
 };

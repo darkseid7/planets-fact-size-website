@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import eartLogo from "../assets/planet-earth.svg";
+import eartLogo from "../../assets/planet-earth.svg";
 
 const StyledLoader = styled.div`
   width: 100%;

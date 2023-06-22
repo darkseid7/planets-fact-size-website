@@ -7,7 +7,7 @@ import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
 import MenuItem from "./Menu/components/MenuItem/MenuItem";
 
-import ResponsiveHeader from "../ResponsiveHeader/ResponsiveHeader";
+import ResponsiveHeader from "./ResponsiveHeader/ResponsiveHeader";
 
 const StyledHeader = styled.header`
   padding: 1rem;
@@ -18,19 +18,16 @@ const StyledHeader = styled.header`
   align-items: center;
   border-bottom: 1px solid rgb(151, 151, 151, 0.2);
 
-  .topnav,
-  .icon {
-    display: none;
-  }
-
   ${media.tablet} {
-    padding: 0;
     display: block;
+    padding: 0;
     height: 159px;
   }
 
   ${media.phone} {
-    display: none;
+    padding: 0 24px;
+    display: flex;
+    height: 68px;
   }
 `;
 
@@ -42,8 +39,8 @@ const Header = ({ setNewUrl }) => {
         <Menu>
           <MenuItem setNewUrl={setNewUrl} />
         </Menu>
+        <ResponsiveHeader setNewUrl={setNewUrl} />
       </StyledHeader>
-      <ResponsiveHeader setNewUrl={setNewUrl} />
     </>
   );
 };

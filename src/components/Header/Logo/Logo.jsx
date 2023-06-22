@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { fontAntonio } from "../../../styled-components/Global";
+
+import { fontAntonio, media } from "../../../styled-components/Global";
 
 export const StyledLogo = styled.h2`
   font-family: ${fontAntonio};
@@ -12,7 +13,7 @@ export const StyledLogo = styled.h2`
     display: none;
   }
 
-  @media only screen and (max-width: 1060px) {
+  ${media.tablet} {
     text-align: center;
     margin: 0;
     padding: 40px 0;

@@ -1,10 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { usePlanetDataStorage } from "../../../../../../store/PlanetsData";
+import { fontSpartan, media } from "../../../../../../styled-components/Global";
 
-const fontSpartan = "Spartan";
 const MenuContainer = styled.div`
   display: none;
+  width: calc(100% - -36px);
+  left: -18px;
+  position: absolute;
+  top: -10px;
+  z-index: 1;
 
   .menu-responsive {
     display: flex;
@@ -13,7 +19,7 @@ const MenuContainer = styled.div`
     border-bottom: 1px solid rgba(151, 151, 151, 0.2);
   }
 
-  @media only screen and (max-width: 664px) {
+  ${media.phone} {
     display: block;
   }
 `;
@@ -21,7 +27,7 @@ const MenuContainer = styled.div`
 const MenuItem = styled.div`
   font-family: ${fontSpartan};
   font-size: 9px;
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  padding: 1.3rem 1.5rem 0.8rem 1.5rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -41,16 +47,20 @@ const MenuItem = styled.div`
     border-bottom: ${({ color }) => `4px solid ${color}`};
   }
 `;
-const ResponsiveButtonInfo = ({ color, handleClick, selectedButton }) => {
-  const [active, setActive] = useState(selectedButton);
+
+function PlanetActionButtonsResponsive({ button, setButton }) {
+  const [active, setActive] = useState("overview");
+  const { dataP, setExecuteAnimation } = usePlanetDataStorage();
+  const { color } = dataP;
 
   useEffect(() => {
-    setActive(selectedButton);
-  }, [selectedButton]);
+    setActive(button);
+  }, [button]);
 
   const handleButtonClick = (name) => {
     setActive(name);
-    handleClick(name);
+    setButton(name);
+    setExecuteAnimation();
   };
 
   return (
@@ -85,6 +95,6 @@ const ResponsiveButtonInfo = ({ color, handleClick, selectedButton }) => {
       </MenuContainer>
     </>
   );
-};
+}
 
-export default ResponsiveButtonInfo;
+export default PlanetActionButtonsResponsive;

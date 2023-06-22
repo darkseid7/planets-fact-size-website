@@ -3,7 +3,7 @@ import { usePlanetDataStorage } from "./store/PlanetsData";
 
 import Planet from "./components/Planet/Planet";
 import Header from "./components/Header/Header";
-import Sky from "./components/Sky";
+import Sky from "./components/common/Sky";
 import Loader from "./components/common/Loader";
 
 import { usePlanets } from "./hooks/Planets";

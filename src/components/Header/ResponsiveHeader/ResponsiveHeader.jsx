@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu/Menu";
 import MenuItem from "./Menu/MenuItem/MenuItem";
 
+import { media } from "../../../styled-components/Global";
+
 const MenuResponsive = styled(motion.div)`
   width: 100%;
   top: 68px;
@@ -18,7 +20,7 @@ const MenuResponsive = styled(motion.div)`
   z-index: 999;
   display: none;
 
-  @media only screen and (max-width: 664px) {
+  ${media.phone} {
     display: ${({ showMenu }) => showMenu};
   }
 `;

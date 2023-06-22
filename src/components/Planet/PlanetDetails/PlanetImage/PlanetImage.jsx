@@ -14,11 +14,11 @@ const StyledPlanetImage = styled.div`
   align-items: center;
   position: relative;
 
-  @media only screen and (max-width: 1140px) {
+  ${media.desktop_m} {
     margin-right: 0rem;
   }
 
-  @media only screen and (max-width: 1060px) {
+  ${media.tablet} {
     width: 100%;
     height: 600px;
     text-align: center;
@@ -27,7 +27,7 @@ const StyledPlanetImage = styled.div`
     align-items: center;
   }
 
-  @media only screen and (max-width: 664px) {
+  ${media.phone} {
     height: 300px;
   }
 `;
@@ -42,7 +42,7 @@ const Image = styled(motion.img)`
     top: 80px;
   }
 
-  @media only screen and (max-width: 768px) {
+  ${media.tablet_s} {
     &.surface-image {
       top: 400px;
     }
@@ -54,7 +54,7 @@ const Image = styled(motion.img)`
     }
   }
 
-  @media only screen and (max-width: 664px) {
+  ${media.phone} {
     width: ${({ size }) => size};
 
     &.surface-image {

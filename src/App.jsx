@@ -4,7 +4,7 @@ import { usePlanetDataStorage } from "./store/PlanetsData";
 import Planet from "./components/Planet/Planet";
 import Header from "./components/Header/Header";
 import Sky from "./components/Sky";
-import Loader from "./components/Loader";
+import Loader from "./components/common/Loader";
 
 import { usePlanets } from "./hooks/Planets";
 
@@ -19,7 +19,10 @@ function App() {
   return (
     <>
       <Sky />
-      <MainContainerApp initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <MainContainerApp
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <Header setNewUrl={setNewUrl} />
         <Planet planet={dataP} />
       </MainContainerApp>

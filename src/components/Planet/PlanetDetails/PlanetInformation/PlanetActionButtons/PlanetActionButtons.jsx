@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { fontSpartan } from "../../../../../styled-components/Global";
+import { fontSpartan, media } from "../../../../../styled-components/Global";
+
 import { usePlanetDataStorage } from "../../../../../store/PlanetsData";
 
 export const StyledPlanetActionButtons = styled(motion.div)`
@@ -35,7 +36,7 @@ export const StyledPlanetActionButtons = styled(motion.div)`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  ${media.tablet_s} {
     button {
       font-size: 9px;
       letter-spacing: 1.9px;
@@ -44,7 +45,7 @@ export const StyledPlanetActionButtons = styled(motion.div)`
     }
   }
 
-  @media only screen and (max-width: 664px) {
+  ${media.phone} {
     display: none;
   }
 `;
@@ -76,7 +77,6 @@ function PlanetActionButtons({ button, setButton }) {
       <motion.button
         key={button}
         variants={buttonVariants}
-        // initial="initial"
         whileTap="tap"
         whileHover="hover"
         name="overview"
@@ -88,7 +88,6 @@ function PlanetActionButtons({ button, setButton }) {
       <motion.button
         name="internal-structure"
         variants={buttonVariants}
-        // initial="initial"
         whileTap="tap"
         whileHover="hover"
         className={button === "internal-structure" ? "btn-active" : ""}
@@ -98,7 +97,6 @@ function PlanetActionButtons({ button, setButton }) {
       </motion.button>
       <motion.button
         variants={buttonVariants}
-        // initial="initial"
         whileTap="tap"
         whileHover="hover"
         name="surface-geology"

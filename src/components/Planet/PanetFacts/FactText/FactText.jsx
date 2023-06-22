@@ -9,10 +9,6 @@ const StyledFactText = styled.span`
   opacity: 0.5;
   mix-blend-mode: normal;
 
-  ${media.tablet} {
-    font-size: 30px;
-  }
-
   ${media.tablet_s} {
     font-size: 8px;
     letter-spacing: 0.73px;

@@ -3,22 +3,21 @@ import styled from "styled-components";
 
 import PlanetImage from "./PlanetImage/PlanetImage";
 import PlanetInformation from "./PlanetInformation/PlanetInformation";
+import PlanetActionButtonsResponsive from "./PlanetInformation/PlanetActionButtons/PlanetActionButtonsResponsive/PlanetActionButtonsResponsive";
+
+import { media } from "../../../styled-components/Global";
 
 const StyledPlanetDetails = styled.section`
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding-top: 50px;
 
-  transition: all 0.5s ease-out;
-
-  @media only screen and (max-width: 1060px) {
+  ${media.tablet} {
     display: block;
     padding-top: 4rem;
-  }
-
-  @media only screen and (max-width: 664px) {
-    padding-top: 0;
   }
 `;
 
@@ -27,6 +26,10 @@ function PlanetDetails() {
 
   return (
     <StyledPlanetDetails>
+      <PlanetActionButtonsResponsive
+        button={selectedButton}
+        setButton={setSelectedButton}
+      />
       <PlanetImage button={selectedButton} />
       <PlanetInformation
         button={selectedButton}

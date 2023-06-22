@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { usePlanetDataStorage } from "../../../../../store/PlanetsData";
-
-import { fontSpartan } from "../../../../../styled-components/Global";
+import { fontSpartan, media } from "../../../../../styled-components/Global";
 import svgSourceIcon from "../../../../../assets/icon-source.svg";
+
+import { usePlanetDataStorage } from "../../../../../store/PlanetsData";
 
 const StyledPlanetTextContent = styled.div`
   .name {
@@ -43,7 +43,7 @@ const StyledPlanetTextContent = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1060px) {
+  ${media.tablet} {
     width: 339px;
 
     .name {
@@ -56,7 +56,7 @@ const StyledPlanetTextContent = styled.div`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  ${media.tablet_s} {
     height: 253px;
 
     .name {
@@ -74,7 +74,7 @@ const StyledPlanetTextContent = styled.div`
     }
   }
 
-  @media only screen and (max-width: 664px) {
+  ${media.phone} {
     width: 100%;
 
     .name {
@@ -133,7 +133,11 @@ function PlanetTextContent({ button }) {
           rel="noreferrer"
         >
           Wikipedia
-          <img className="sourceIcon" src={svgSourceIcon} alt="" />
+          <img
+            className="sourceIcon"
+            src={svgSourceIcon}
+            alt=""
+          />
         </a>
       </p>
     </StyledPlanetTextContent>
